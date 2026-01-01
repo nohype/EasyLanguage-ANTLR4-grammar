@@ -225,11 +225,13 @@ postfix_part:
 	call_suffix
 	| member_suffix
 	| bracket_suffix
-	| data_suffix;
+	| data_suffix
+	| astype_suffix;
 call_suffix: LPAR arg_list? RPAR;
 member_suffix: DOT IDENT;
 bracket_suffix: LBRACK expr RBRACK;
 data_suffix: OF DATA_REF | OF DATA_KW LPAR expr RPAR;
+astype_suffix: ASTYPE type_ref;
 
 // Primary
 primary: literal | series_word | IDENT | LPAR expr RPAR;
@@ -303,6 +305,7 @@ CATCH: 'catch';
 FINALLY: 'finally';
 THROW: 'throw';
 NEW: 'new';
+ASTYPE: 'astype';
 USING: 'using';
 METHOD: 'method';
 VOID: 'void';
